@@ -1,0 +1,8 @@
+Flask==2.0.3
+gunicorn
+nltk
+editdistance
+scipy
+statistics
+gpt-2-simple==0.8.1
+sentence_transformers==2.2.2

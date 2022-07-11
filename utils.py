@@ -158,4 +158,4 @@ def samples_selector(samples,title,genre,model):
   #Passar titulo, genero e model aqui
   scores = calculate_score(samples,title,genre,model)
   
-  return samples[np.argmax(scores)][:-1]
+  return samples[np.argmax(scores)]

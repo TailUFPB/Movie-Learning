@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Learning</title>
+    <link rel="icon" type="imagem/png" href="/static/logo-parcial.png"/>
+    <!-- estilo CSS -->
+    <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+    
+    <!-- Header -->
+    <header>
+        <!-- Nav -->
+            <nav class="header">
+                <div class="general-header container">
+                    <div class="logo">
+                        <img src="/static/logo-parcial.png" alt="">
+                        <h1>Movie Learning</h1>
+                    </div>
+
+                    <div class="main-header">
+
+                        <ul class="header-list">
+                            <li class="header-item">
+                                <a href="index.html" class="header-link">Início</a>
+                            </li>
+                            <li class="header-item">
+                                <a href="documentacao.html" class="header-link">Documentação</a>
+                            </li>
+                            <li class="header-item">
+                                <a href="contato.html" class="header-link">Contatos</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+    </header>
+
+    <!-- Main -->
+    <main class="main">
+        <div class="title">
+            <h1>Movie Learning</h1>
+        </div>
+        <section class="sections">
+            <div class="container-md">
+                <p class="texto-introducao">Movie Learning é um projeto de inteligência artificial, desenvolvido pela equipe de NLP da TAIL-UFPB, que é capaz de gerar a história de um filme vencedor de Óscar. Para que isso aconteça, você deve apenas escolher um título, um gênero e descrever brevemente a história do filme que você deseja criar.</p>
+                
+                <form action="synp" id="req" class="form">
+                    <fieldset class="fieldset-1">
+                        <div>
+                            <label class="title-form" for="t">Título do filme</label>
+                            <br>
+                            <input type="text" name="t" id="titulo" class="input input-titulo">
+                        </div>
+    
+                        <div>
+                            <label class="title-form" for="g">Gênero</label>
+                            <br>
+                            <select name="g" id="genero" class="input select-genero">
+                                <option selected disabled value="">Selecione</option>
+                                <option value="comedy">Comédia</option>
+                                <option value="action">Ação</option>
+                                <option value="romance">Romance</option>
+                                <option value="thriller">Suspense</option>
+                                <option value="horror">Terror</option>
+                                <option value="mystery">Mistério</option>
+                                <option value="drama">Drama</option>
+                                <option value="documentary">Documentário</option>
+                                <option value="music">Musical</option>
+                                <option value="animation">Animação</option>
+                                <option value="science fiction">Ficção científica</option>
+                                <option value="adventure">Aventura</option>
+                            </select>  
+                        </div>
+                    </fieldset>
+                    <fieldset class="fieldset-2">
+                        <div>
+                            <label class="title-form" for="d">Início da sua sinopse (Opcional)</label>
+                            <br>
+                            <textarea name="d" id="descricao" class="input input-descricao"></textarea>
+    
+                        </div>
+                        
+                    </fieldset>
+    
+                    <div class="button">
+                        <button>Enviar</button>
+                    </div>
+                </form>
+
+
+                <div class="title title-sinopse">
+                    <h1>Sua Sinopse</h1>
+                </div>
+                <div class="box-sections">
+                    <div class="box-sinopse">
+                        <div>
+                            <div class="text-sinopse">
+                                <p class="texto-introducao" id="ret-sinopse"> </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+                <script>
+                    // this is the id of the form
+                    $("#req").submit(function(e) {
+                    
+                    e.preventDefault(); // avoid to execute the actual submit of the form.
+                    
+                    var form = $(this);
+                    var actionUrl = form.attr('action');
+
+                    $('#ret-sinopse').html("Loading... Please Wait!");
+                    
+                    $.ajax({
+                        type: "GET",
+                        url: actionUrl,
+                        data: form.serialize(), // serializes the form's elements.
+                        success: function(data)
+                        {
+                            $('#ret-sinopse').html(data);
+                        }
+                    });
+
+                    });
+                </script>
+
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="section-footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <div class="icons">
+                        <div class="icon">
+                            <img src="/static/tail.JPG" alt="">
+                        </div>
+                        <div class="icon">
+                            <img src="/static/logo-parcial.png" alt="">
+                        </div>
+                        <div class="icon">
+                            <img src="/static/aria.JPG" alt="">
+                        </div>
+                    </div>
+
+                    <ul class="header-list">
+                        <li>
+                            <a href="index.html" class="header-link">Início</a>
+                        </li>
+                        <li>
+                            <a href="documentacao.html" class="header-link">Documentação</a>
+                        </li>
+                        <li>
+                            <a href="contato.html" class="header-link">Contatos</a>
+                        </li>
+                    </ul>
+
+                    <h3>Movie Learning</h3>
+
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
