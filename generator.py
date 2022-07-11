@@ -23,7 +23,7 @@ class Synopsis_Generator:
               return_as_list=True
               )
         
-        return samples_selector([samp.split('@')[1][:-1] for samp in samples],title,genre,self.pos_proc_model)
+        return samples_selector([samp.split('@')[1] for samp in samples],title,genre,self.pos_proc_model)
 
 if __name__ == "__main__":
     synp = Synopsis_Generator()
